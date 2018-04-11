@@ -20,7 +20,7 @@ class RBF:
     def _basisfunc(self, c, d,ci):  #计算高斯函数值
         assert len(d) == self.indim
         b=float(self.beta[ci])
-        return exp(-b * norm(c - d) ** 2) #采用高斯函数
+        return exp(- norm(c - d) ** 2)*b  #采用高斯函数
 
     def _calcAct(self, X):  #计算Green矩阵
         G = zeros((len(X), self.numCenters), float)   #初始化G
