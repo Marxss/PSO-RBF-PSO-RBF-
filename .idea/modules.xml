@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/KNN.iml" filepath="$PROJECT_DIR$/.idea/KNN.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PSO_RBF.iml" filepath="$PROJECT_DIR$/.idea/PSO_RBF.iml" />
     </modules>
   </component>
