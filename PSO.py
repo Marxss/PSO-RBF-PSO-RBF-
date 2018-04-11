@@ -74,7 +74,7 @@ class PSO():
             b.append(temp)
         rbf = RBF(5, int(self.dim/6), 1,centers,b)
         rbf.train(self.data, self.Y)
-        fitness = rbf.cald(self.data, self.Y)
+        fitness = rbf.cal_distance(self.data, self.Y)
         #print('fitness:',fitness)
 
         return fitness

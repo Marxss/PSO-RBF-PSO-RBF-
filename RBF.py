@@ -43,7 +43,7 @@ class RBF:
         Y = dot(G, self.W)
         return Y
 
-    def cald(self,X,Y):
+    def cal_distance(self,X,Y):
         pY=self.test(X)
         d=pY-Y
         d=d**2
