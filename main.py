@@ -1,8 +1,10 @@
 from MN import *
 from PSO import *
 from RBF import *
+import time
 
 if __name__ == '__main__':
+    time_start = time.time()
     trainData=[[0.91,0.21,0.02,0.04,0.06],[0.88,0.23,0.04,0.03,0.05],[0.90,0.20,0.05,0.03,0.02],
                [0.04,0.98,0.10,0.02,0.02],[0.02,0.97,0.08,0.01,0.01],[0.03,0.99,0.09,0.02,0.02],
                [0.02,0.41,0.43,0.34,0.15],[0.01,0.47,0.40,0.32,0.10],[0.02,0.52,0.41,0.31,0.14],
@@ -12,6 +14,8 @@ if __name__ == '__main__':
     my_pso = PSO(pN=15, dim=9, max_iter=maxi,data=trainData,Y=Y)
     my_pso.init_Population()
     fitness = my_pso.iterator()
+    time_end = time.time()
+    print('totally cost', time_end - time_start)
 
     plt.figure(1)
     plt.title("Figure1")
