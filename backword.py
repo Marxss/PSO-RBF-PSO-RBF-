@@ -30,17 +30,16 @@ def backward():
 
     global_step = tf.Variable(0, trainable=False)
 
+    #指数衰减学习率
     learning_rate = tf.train.exponential_decay(
         LEARNING_RATE_BASE,
         global_step,
         5,
         LEARNING_RATE_DECAY,
         staircase=True)
-
     # 定义损失函数
     loss_mse = tf.reduce_mean(tf.square(y - y_))
     loss_total = loss_mse + tf.add_n(tf.get_collection('losses'))
-
     # 定义反向传播方法：包含正则化
     train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss_total)
 
@@ -60,7 +59,8 @@ def backward():
         testData = [[0.91, 0.18, 0.02, 0.04, 0.06], [0.03, 0.97, 0.05, 0.02, 0.02],
                     [0.02, 0.41, 0.43, 0.34, 0.15], [0.01, 0.04, 0.02, 0.03, 0.03]]
         testData=np.array(testData).reshape(4,5)
-        print(sess.run(y,feed_dict={x:testData}))
+        print('训练结果：',sess.run(y,feed_dict={x:testData}).reshape(1,4))
+        time_end = time.time()
 
         #绘图
         plt.figure(1)
@@ -72,6 +72,7 @@ def backward():
         plt.plot(t, fitness, color='b', linewidth=1)
         plt.show()
 
+        return time_end
     #     xx, yy = np.mgrid[-3:3:.01, -3:3:.01]
     #     grid = np.c_[xx.ravel(), yy.ravel()]
     #     probs = sess.run(y, feed_dict={x: grid})
@@ -84,7 +85,6 @@ def backward():
 
 if __name__ == '__main__':
     time_start = time.time()
-    backward()
-    time_end = time.time()
-    print('totally cost', time_end - time_start)
+    time_end =backward()
+    print('耗时：', time_end - time_start)
 

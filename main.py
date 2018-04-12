@@ -15,7 +15,7 @@ if __name__ == '__main__':
     my_pso.init_Population()
     fitness = my_pso.iterator()
     time_end = time.time()
-    print('totally cost', time_end - time_start)
+    print('训练耗时：', time_end - time_start)
 
     plt.figure(1)
     plt.title("Figure1")

@@ -20,7 +20,7 @@ class RBF:
     def _basisfunc(self, c, d,ci):  #计算高斯函数值
         assert len(d) == self.indim
         b=float(self.beta[ci])
-        return exp(- norm(c - d) ** 2)*b  #采用高斯函数
+        return exp(- b*norm(c - d) ** 2)  #采用高斯函数
 
     def _calcAct(self, X):  #计算Green矩阵
         G = zeros((len(X), self.numCenters), float)   #初始化G
@@ -30,9 +30,6 @@ class RBF:
         return G
 
     def train(self, X, Y):
-        """ X: matrix of dimensions n x indim
-            y: column vector of dimension n x 1 """
-
         G = self._calcAct(X)
         self.W = dot(pinv(G), Y)
 
